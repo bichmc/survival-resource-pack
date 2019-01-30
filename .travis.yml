@@ -1,0 +1,21 @@
+# There are no dependencies to install
+install: true
+
+# Build ZIP-archive of resourcepack from `resourcepack/` directory
+before_deploy:
+  - zip -r resourcepack.zip resourcepack/
+
+deploy:
+  # Provider for GutHub Releases
+  provider: releases
+  # Set in TravisCI Web UI
+  api_key: $GITHUB_RELEASES_OATH_TOKEN
+  # File to be deployed
+  file: resourcepack.zip
+  # Do not delete files generated while building
+  skip_cleanup: true
+  # Should happen only for tagged commits
+  on:
+    tags: true
+  # TODO remove, required only to test deployment
+  draft: true
