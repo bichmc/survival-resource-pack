@@ -1,5 +1,7 @@
 # There are no dependencies to install
-install: true
+install: false
+
+language: generic
 
 # Build ZIP-archive of resourcepack from `resourcepack/` directory
 before_deploy:
